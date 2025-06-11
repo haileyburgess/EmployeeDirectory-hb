@@ -7,6 +7,12 @@ export default app;
 
 //write the most specific route first
 
+//get a random employee -- only worked in this location! surprising!
+app.route("/employees/random").get((request, response) => {
+  const randomID = Math.floor(Math.random() * employees.length);
+  response.send(employees[randomID]);
+});
+
 //getting specific employee by id
 app.route("/employees/:id").get((request, response) => {
   const { id } = request.params;
@@ -22,7 +28,7 @@ app.route("/employees/:id").get((request, response) => {
 });
 
 //returning all employees
-app.route("/employees").get((response, request) => {
+app.route("/employees").get((request, response) => {
   response.send(employees);
 });
 
